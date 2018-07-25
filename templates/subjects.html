@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="container-api">
+    <h2>Subjects:</h2>
+    <div id="subjects">
+	    <h3>Select your subject:</h3>
+	    {% for subject in subjects %}
+	       <div class="nav" id="{{ url_for( 'catalog_route', term_code=term_code, schools_code=schools_code,subject_code=subject['SubjectCode'] ) }}"> {{ subject['SubjectDescr'] }} </div>
+	    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="container-api">
+	Course Description:
+    <p>{{ course_descrips[0:-1] }}.</p>
+	<div class="container">
+   		
+    </div>	
+ 	<h3>Sections</h3>
+ 	<span id="sections">
+ 		<div id="sections-columns">
+			<div id="sections-col">Section</div>
+			<div id="sections-col-days">Days</div>
+			<div id="sections-col-times">Times</div>
+			<div id="sections-col-credits">Credits</div>
+		</div>	
+	<br>
+	<br>	
+ 	{% for section in sections %}
+ 	<div id="sections-columns-details">
+	 	<div class="nav" id="{{ url_for('sections_route', term_code=term_code, schools_code=schools_code,subject_code=subject_code,catalog_num=catalog_num,section=section['SectionNumber'])}}">
+	     	<div id="sections-col">{{ section['SectionNumber']}} ({{ section['SectionType']}})</div>
+			<div id="sections-col-days">{{ section['Meetings'][0]['Days']}}</div>
+			<div id="sections-col-times">{{ section['Meetings'][0]['Times']}}</div>
+			<div id="sections-col-credits">{{ section['CreditHours']}}</div>
+		</div>
+	</div>
+ 	{% endfor %}
+ 	</span>
+</div>
+
+{% endblock %}

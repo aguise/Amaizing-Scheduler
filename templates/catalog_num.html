@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="container-api">
+    <h2>Catalog Number:</h2>
+    <div id="catalog_num">
+        <h3>Select your Catalog num:</h3>
+        {% for catalog_num in catalog_nums %}
+        	<div class="nav" id="{{url_for('course_descrip_route',term_code=term_code,schools_code=schools_code, subject_code=subject_code,catalog_num=catalog_num['CatalogNumber']) }}">{{ catalog_num['CatalogNumber'] }} : {{ catalog_num['CourseTitle'] }} </div>
+        	
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

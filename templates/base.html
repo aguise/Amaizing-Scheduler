@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <title>aMaizing Scheduler</title>
+    {% endblock %}
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:100italic,100,300italic,300,400italic,400,500italic,500,700italic,700,900italic,900' rel='stylesheet' type='text/css'>
+
+    <a href="#" class="Top"> Top </a>
+
+  </head>
+
+  <body>
+    
+    <div id="container">
+      {% include "header.html" %}
+        <!-- rest of body -->
+      <div id="content">
+        {% block content %}
+
+        {% endblock %}
+      </div>
+      
+      <div id="footer">
+        {% include "footer.html" %}
+      </div>
+    </div>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Links script.js to all files -->
+    <script src="{{ url_for('static', filename='script.js')}}"></script>
+
+  </body>
+</html>
+

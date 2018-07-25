@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="container-api">
+    <h2>Terms:</h2>
+    <div id="terms">
+        <h3>Select your term:</h3>
+     	{% for term in terms %}
+	       <div class="nav" id="{{ url_for('schools_route', term_code=term['TermCode']) }}">{{ term['TermDescr'] }}</div>
+    	{% endfor %}
+    </div>
+</div>
+
+{% endblock %}

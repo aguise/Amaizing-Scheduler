@@ -1,0 +1,218 @@
+body {
+    margin: ;
+    padding: 0;
+    font-family: "Roboto", Helvetica, sans-serif;
+}
+#map {
+    height:400px;
+    width: 100%;
+}
+#container{
+    margin-bottom: 100px;
+    font-size: 18px;
+    font-weight: 200;
+}
+#container-api{
+    margin-left: 120px;
+    margin-right: 120px;
+}
+p {
+    margin:0px;
+    font-size:.9em;
+}
+li {
+    list-style: none;
+    font-size: 17px;
+}
+/* upper left "logo" css */
+.logo{
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    z-index: 99;
+}
+.logo > a {
+    text-decoration: none;
+    color: #ffffff;
+}
+.logo > a:hover {
+    text-decoration: none;
+    color: rgba(95, 94, 94, 0.6);
+}
+
+/* Sections page */
+#sections-columns{
+    font-size: 20px;
+    font-weight: 200;
+    display:inline-block;
+    text-align: center;
+    margin-left: 220px;
+    margin-right: auto;
+}
+#sections-columns-details{
+    font-size: 20px;
+    font-weight: 200;
+    display:inline-block;
+    text-align: center;
+    margin-left: 222px;
+    margin-right: auto;
+}
+#sections-col {
+    display:inline-block;
+    text-align: center;
+    margin-left: 20px;
+    width:110px;
+    vertical-align:top; 
+
+}
+#sections-col-days {
+    display:inline-block;
+    text-align: center;
+    margin-right: auto;
+    width:140px;
+    vertical-align:top;
+}
+#sections-col-times {
+    display:inline-block;
+    text-align: center;
+    margin-right:auto;
+    width:200px;
+    vertical-align:top; 
+}
+#sections-col-credits {
+    display:inline-block;
+    text-align: center;
+    margin-right:auto;
+    width: 90px;
+    vertical-align:top;
+}
+
+/* Top button */
+.Top {
+    position: fixed; 
+    bottom: 4em; 
+    right: 40px; 
+    z-index: 99; 
+    border: none; 
+    outline: none; 
+    background-color: #b29a6d; 
+    color: white; 
+    width: 50px;
+    padding: 10px 0px 10px 13px;
+    border-radius: 10px; 
+}
+
+.Top:hover {
+    color: white;
+    background-color: rgba(178, 154, 109, 0.65); 
+    text-decoration: none;
+}
+
+/* pick a term/school/subject/etc nav links */
+.nav {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 200;
+    margin-bottom: auto;
+}
+.nav:hover {
+    color: #b88155;
+    cursor: pointer;
+}
+/* header css */
+#header {
+    position: relative; 
+    height: 400px;
+    background: url('/static/images/lawlibrary.jpg') center center;
+    background-size: cover;
+    margin-top: 0px;
+
+    z-index: 5;
+}
+#header h2 {
+    position: absolute;
+    top: 100px;
+    left: 405px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700px;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    background: rgba(100,100,100,0.5);
+    border: #ffffff solid 5px;
+    border-radius: 10px; 
+    padding: 0.2em 0.4em;
+    width: 300px;
+    height: 115px;
+    display:inline-block;
+    padding: 0.2em 0.4em;
+}
+
+/* top nav buttons */
+nav {
+    float: right;
+    margin: 30px 30px 0 0;
+}
+nav a {
+    display:inline-block;
+    margin-left: 20px;
+
+    color: rgba(255,255,255,1);
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+
+    background-color: rgba(0,0,0,0.6);
+    padding: 5px 5px 5px 5px;
+    border: rgba(0,0,0,0) solid 5px;
+    border-radius: 10px;
+}
+nav a:hover {
+    color: rgba(95, 94, 94, 0.6);
+    text-decoration: none;
+}
+
+/* body content */
+h2 {
+    position: relative;
+    text-align: center;
+}
+h3 {
+    position: relative;
+    text-align: center;
+}
+/* Breadcrumbs */
+.breadcrumb {
+    position: relative;
+    text-align: center;
+}
+#terms{
+    position: relative;
+    text-align: center;
+}
+#schools {
+    position: relative;
+    text-align: center;
+}
+#subjects{
+    position: relative;
+    text-align: center;
+}
+#catalog_num {
+    position: relative;
+}
+#catalog_num p {
+    margin-left: 50px;
+    text-align: justify;
+}
+.Home{
+    position: fixed;
+    top: 5px;
+    left: 10px;
+    padding: 5px 45px 5px 10px;
+    width: 50px;
+    height: 50px
+}
+
+/* media java */

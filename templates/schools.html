@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="container-api">
+	<ol class="breadcrumb">
+	  <li><a href="/">Terms</a></li>
+	  <li class="active">Schools</li>
+	</ol>
+    <h2>Schools:</h2>
+    <div id="schools">
+	    <h3>Select your school:</h3>
+	    {% for school in schools %}
+	       <div class="nav" id="{{ url_for( 'subjects_route', term_code=term_code, schools_code=school['SchoolCode'] ) }}"> {{ school['SchoolDescr'] }} </div>
+	    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

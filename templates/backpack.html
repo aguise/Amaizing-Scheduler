@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<h1>My Backpack</h1>
+<div>
+	
+</div>
+
+<div>
+	<ul id="show-backpack">
+		<div> Your Backpack is Empty </div>
+	</ul>
+
+	<script>
+	displayBackpack();
+	function displayBackpack() {
+		var backpackArray = listBackpack();
+		var output = "";
+		for (var i in backpackArray) {
+			output += "<li>"+"Course Title: "+backpackArray[i].course_title+"; Catalog Number: "+backpackArray[i].catalog_num+"; Section Number: "+backpackArray[i].section_num+" "+"<button class='remove-class' data-name='"+backpackArray[i].catalog_num+"'>Remove Class</button>"+"</li>";
+		}
+		if (output == "") {
+			output = "Your Backpack is Empty";
+		}
+		$("#show-backpack").html(output);
+		}
+	$("#show-backpack").on("click", ".remove-class", function(event) {
+		var num = $(this).attr("data-name");
+		removeClass(num);
+		displayBackpack();
+	});
+
+	// ***************************************************************
+	// Backpack Functions
+	// ***************************************************************
+	var backpack = [];
+	var Class = function(course_title, catalog_num, section_num) {
+		this.course_title = course_title;
+		this.catalog_num = catalog_num;
+		this.section_num = section_num;
+	}
+	function removeClass(catalog_num) {
+		for (var i in backpack) {
+			if (backpack[i].catalog_num == catalog_num) {
+					backpack.splice(i, 1);
+					break;
+				}
+			}
+		saveBackpack();
+		displayBackpack();
+	}
+	function listBackpack() {
+		var backpackCopy = [];
+		for (var i in backpack) {
+			var userClass = backpack[i];
+			var classCopy = {};
+			for (var p in userClass) {
+				classCopy[p] = userClass[p];
+			}
+			backpackCopy.push(classCopy);
+		}
+		return backpackCopy;
+	}
+	function saveBackpack() {
+		localStorage.setItem("backpack", JSON.stringify(backpack));
+	}
+	function loadBackpack() {
+		backpack = JSON.parse(localStorage.getItem("backpack"));
+	}
+	</script>
+</div>
+
+{% endblock %}

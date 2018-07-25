@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="container-api">
+	<h2>Sections:</h2>
+	<div id="section"> 
+		<ul>
+			<li>{{ details['SubjectId'] }} {{ details['CatalogNumber'] }} - {{ details['CourseTitle'] }}</li>
+			<li>Section: {{ details['SectionNumber'] }}</li>
+			<li>Credit Hours: {{ details['CreditHours'] }}</li>
+			<li>{{ details['AdditionalInfoHTML'] }}</li>
+			<li>Instructor: {{ details['Meetings'][0]['Instructor'][0] }}</li>
+			<li>Location: {{ details['Meetings'][0]['Location'] }}</li>
+			<p></p>
+			<input type="button" name="add_class_button" value="Add Class to Backpack" onclick="addClass()"/>
+
+			<script>
+			function displayBackpack() {
+				var backpackArray = listBackpack();
+				var output = "";
+				for (var i in backpackArray) {
+					output += "<li>"+"Course Title: "+backpackArray[i].course_title+"; Catalog Number: "+backpackArray[i].catalog_num+"; Section Number: "+backpackArray[i].section_num+" "+"<button class='remove-class' data-name='"+backpackArray[i].catalog_num+"'>Remove Class</button>"
+						+"</li>";
+				}
+				if (output == "") {
+					output = "Your Backpack is Empty";
+				}
+				$("#show-backpack").html(output);
+			}
+			$("#show-backpack").on("click", ".remove-class", function(event) {
+				var num = $(this).attr("data-name");
+				removeClass(num);
+				displayBackpack();
+			});
+
+			// ***************************************************************
+			// Backpack Functions
+			// ***************************************************************
+			var backpack = [];
+			var Class = function(course_title, catalog_num, section_num) {
+				this.course_title = course_title;
+				this.catalog_num = catalog_num;
+				this.section_num = section_num;
+			}
+			function addClass() {
+				var course_title = "{{ details['CourseTitle'] }}";
+				alert(course_title);
+				var catalog_num = "{{ details['CatalogNumber'] }}";
+				var section_num = "{{ details['SectionNumber'] }}";
+				for (var i in backpack) {
+					if (backpack[i].catalog_num == catalog_num) {
+						alert("Class Already in Backpack");
+						return;
+					}
+				}
+				var item = new Class(course_title, catalog_num, section_num);
+				backpack.push(item);
+				alert("Class Added to Backpack");
+				saveBackpack();
+			}
+			function removeClass(catalog_num) {
+				for (var i in backpack) {
+					if (backpack[i].catalog_num == catalog_num) {
+						backpack.splice(i, 1);
+						break;
+					}
+				}
+				saveBackpack();
+				displayBackpack();
+			}
+			function listBackpack() {
+				var backpackCopy = [];
+				for (var i in backpack) {
+					var userClass = backpack[i];
+					var classCopy = {};
+					for (var p in userClass) {
+						classCopy[p] = userClass[p];
+					}
+					backpackCopy.push(classCopy);
+				}
+				return backpackCopy;
+			}
+			function saveBackpack() {
+				localStorage.setItem("backpack", JSON.stringify(backpack));
+			}
+			function loadBackpack() {
+				backpack = JSON.parse(localStorage.getItem("backpack"));
+			}
+			</script>
+			<br>
+			<br>
+		</ul>
+	</div>
+</div>
+
+
+
+<div id="floating-panel">
+      <input id="address" type="textbox" value="{{ details['Meetings'][0]['Location'] }} Ann Arbor, MI">
+      <input id="submit" type="button" value="Search Class Location">
+</div>
+<div id="map"></div>
+<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+        	zoom: 16,
+         	center: {lat: 42.277178, lng: -83.738224},
+        	scrollwheel: false
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+        	geocodeAddress(geocoder, map);
+        });
+      }
+
+    function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+            	map: resultsMap,
+            	position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfP6fHOXrXkSFTjdPHXiSmS6_9PtyOBqY&callback=initMap"></script>
+{% endblock %}
+
+<!-- returns section info: Lecturer/time/day/ -->
