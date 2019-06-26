@@ -41,14 +41,8 @@ def get_terms():
     '''
     return get_data('/get_terms')
 
-'''pyt
-You should add more functions below to get information from the API.
 
-    -   In addition to the information provided in the spec, use the get_terms function 
-        above as a model for how you might setup the other functions.
-    -   Note some functions will need to have arguments (whereas get_terms does not).
-    -   You may remove this comment when you start.
-'''
+# Additional functions for API retrieval #
 
 def get_schools(TermCode):
     # concantenate url with termcode to return to get_data
