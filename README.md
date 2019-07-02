@@ -1,4 +1,4 @@
-Schedule Planning Website
-=========================
+# Overview
+A class scheduling website designed for University of Michigan students. Backend written in Python and Frontend written with HTML and CSS.
 
-See the [Getting Started](https://github.com/eecs183/WebScheduler/wiki/Getting-Started) guide for more information.
+Link --> https://amaizing-scheduler.herokuapp.com/
